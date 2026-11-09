@@ -1,0 +1,14 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "quotepilot",
+  "pages_build_output_dir": "./dist",
+  "compatibility_date": "2026-11-09",
+  "kv_namespaces": [
+    {
+      "binding": "WAITLIST",
+      // Fill these in after creating the namespaces. See README.
+      // "id": "<production namespace id>",
+      // "preview_id": "<preview namespace id>"
+    }
+  ]
+}

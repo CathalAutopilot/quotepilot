@@ -1,0 +1,19 @@
+{
+  "name": "quotepilot",
+  "private": true,
+  "version": "1.0.0",
+  "description": "QuotePilot pilot waitlist site for European freight forwarders and 3PLs.",
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "dev": "wrangler pages dev dist --port 4391 --ip 0.0.0.0 --kv WAITLIST --persist-to .wrangler/state --show-interactive-dev-session=false",
+    "start": "npm run build && npm run dev",
+    "test": "node --test"
+  },
+  "devDependencies": {
+    "wrangler": "^4.158.0"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
