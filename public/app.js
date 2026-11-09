@@ -349,7 +349,7 @@
       else if (onScreen) play();
     });
 
-    select(lanes[0]);
+    select(lanes.find((lane) => lane.mode === "sea") || lanes[0]);
     startCycle();
     play();
   }
@@ -359,70 +359,77 @@
     const demo = document.querySelector("[data-demo]");
     if (!demo) return;
     const fallback = document.querySelector("[data-demo-fallback]");
+    // Sample figures only. They show how a quote is built and are not real rates.
+    const MARGIN = 0.15;
     const SAMPLES = {
       email: {
         kind: "email",
-        head: "Subject: Quote please, Hamburg to Milan",
+        head: "Subject: Rate request, Shanghai to Rotterdam",
         body: [
-          "Hello, could you quote ",
-          ["8 pallets", 2],
+          "Hello, please quote ",
+          ["1 x 40' high cube", 2],
           " from ",
-          ["Hamburg", 0],
+          ["Shanghai", 0],
           " to ",
-          ["Milan", 1],
-          ", ready ",
-          ["Tuesday", 3],
-          "? We need a ",
-          ["tail lift", 4],
-          " at delivery. Thanks.",
+          ["Rotterdam", 1],
+          ", cargo ready ",
+          ["12 December", 3],
+          ". ",
+          ["General cargo", 4],
+          ", port to port. Thanks.",
         ],
-        fields: [["From", "Hamburg"], ["To", "Milan"], ["Load", "8 pallets"], ["Ready", "Tuesday"], ["Extra", "Tail lift"]],
+        fields: [["From", "Shanghai"], ["To", "Rotterdam"], ["Load", "FCL, 1 x 40' high cube"], ["Ready", "12 December"], ["Cargo", "General cargo"]],
         lines: [
-          ["Base freight", "your pallet tariff"],
-          ["Fuel surcharge", "your current rate"],
-          ["Tolls", "applied"],
-          ["Tail lift", "added, as requested"],
-          ["Margin", "your rule for this customer"],
+          ["Ocean freight", "1 x 40' HC, your FCL tariff", 2100],
+          ["BAF", "per container", 320],
+          ["ETS", "per container", 60],
+          ["Terminal handling", "Rotterdam, per container", 260],
+          ["Documentation", "per shipment", 60],
         ],
       },
       excel: {
         kind: "excel",
         head: "request.xlsx",
         rows: [
-          ["Origin", ["Rotterdam", 0]],
-          ["Destination", ["Dublin", 1]],
+          ["Origin", ["Ningbo", 0]],
+          ["Destination", ["Felixstowe", 1]],
           ["Service", ["LCL", 2]],
           ["Volume", ["6.2 cbm", 3]],
           ["Gross weight", ["2,100 kg", 4]],
         ],
-        fields: [["From", "Rotterdam"], ["To", "Dublin"], ["Service", "Sea, LCL"], ["Volume", "6.2 cbm"], ["Weight", "2,100 kg"], ["Stackable", null]],
-        ask: "The sheet doesn't say if the goods can be stacked. Can they?",
+        fields: [["From", "Ningbo"], ["To", "Felixstowe"], ["Service", "Sea, LCL"], ["Volume", "6.2 cbm"], ["Weight", "2,100 kg"], ["Dangerous goods", null]],
+        ask: "The sheet doesn't say whether this is dangerous goods. Is it?",
+        answers: ["No", "Yes"],
         lines: [
-          ["Base freight", "your weight or measure tariff"],
-          ["BAF", "applied"],
-          ["ETS", "applied"],
-          ["Margin", "your rule for this customer"],
+          ["Ocean freight", "6.2 w/m x \u20ac68, your LCL tariff", 421.6],
+          ["BAF", "6.2 w/m x \u20ac9", 55.8],
+          ["ETS", "6.2 w/m x \u20ac3", 18.6],
+          ["Destination charges", "6.2 w/m x \u20ac32", 198.4],
+          ["Documentation", "per shipment", 55],
         ],
       },
       pdf: {
         kind: "pdf",
-        head: "TRANSPORT ORDER (scan)",
+        head: "BOOKING REQUEST (scan)",
         rows: [
-          ["Pickup", ["Frankfurt", 0]],
-          ["Deliver to", ["Dublin", 1]],
-          ["Pieces", ["3 cartons", 2]],
-          ["Each", ["60 x 40 x 40 cm", 3]],
-          ["Gross", ["140 kg", 4]],
+          ["Load port", ["Rotterdam", 0]],
+          ["Discharge", ["Dublin", 1]],
+          ["Equipment", ["2 x 20' standard", 2]],
+          ["Cargo", ["Machine parts", 3]],
+          ["Gross", ["18,400 kg", 4]],
         ],
-        fields: [["From", "Frankfurt"], ["To", "Dublin"], ["Pieces", "3 cartons"], ["Size", "60 x 40 x 40 cm each"], ["Weight", "140 kg"]],
+        fields: [["From", "Rotterdam"], ["To", "Dublin"], ["Load", "FCL, 2 x 20' standard"], ["Cargo", "Machine parts"], ["Weight", "18,400 kg"]],
         lines: [
-          ["Chargeable weight", "worked out from weight and volume"],
-          ["Air rate", "your rate sheet"],
-          ["Fuel and security", "applied"],
-          ["Margin", "your rule for this customer"],
+          ["Ocean freight", "2 x \u20ac780, your FCL tariff", 1560],
+          ["BAF", "2 x \u20ac95", 190],
+          ["ETS", "2 x \u20ac25", 50],
+          ["Terminal handling", "Dublin, 2 x \u20ac180", 360],
+          ["Documentation", "per shipment", 40],
         ],
       },
     };
+    const money = (value) =>
+      "\u20ac" + value.toLocaleString("en-GB", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
     const request = demo.querySelector("[data-demo-request]");
     const out = demo.querySelector("[data-demo-out]");
@@ -529,18 +536,27 @@
         t += 320;
       });
       later(() => {
-        status.textContent = "Pricing it on your tariff...";
+        status.textContent = "Pricing it on your sea freight tariff...";
       }, t);
       t += 250;
-      sample.lines.forEach((line) => {
+      const cost = sample.lines.reduce((sum, line) => sum + line[2], 0);
+      const margin = Math.round(cost * MARGIN * 100) / 100;
+      const rows = sample.lines.concat([
+        ["Margin", "15% on the lines above", margin],
+        ["Total", "indication", cost + margin],
+      ]);
+      rows.forEach((line, i) => {
         later(() => {
-          const li = make("li");
-          li.appendChild(make("span", "", line[0]));
+          const li = make("li", i === rows.length - 1 ? "is-total" : "");
+          const name = make("span", "demo-line-name");
+          name.appendChild(make("span", "", line[0]));
+          name.appendChild(make("small", "", line[1]));
+          li.appendChild(name);
           li.appendChild(make("span", "dots"));
-          li.appendChild(make("span", "", line[1]));
+          li.appendChild(make("span", "demo-amount", money(line[2])));
           linesEl.appendChild(li);
         }, t);
-        t += 260;
+        t += 240;
       });
       later(() => {
         if (!sample.ask) {
@@ -548,8 +564,8 @@
           return;
         }
         status.textContent = sample.ask;
-        const yes = make("button", "chip demo-answer", "Yes");
-        const no = make("button", "chip demo-answer", "No");
+        const yes = make("button", "chip demo-answer", sample.answers[0]);
+        const no = make("button", "chip demo-answer", sample.answers[1]);
         [yes, no].forEach((button) => {
           button.type = "button";
           button.addEventListener("click", () => {

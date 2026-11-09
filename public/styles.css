@@ -1335,6 +1335,36 @@ svg {
   animation: panel-in 0.3s var(--ease);
 }
 
+.demo-line-name {
+  display: grid;
+  gap: 0.1rem;
+}
+
+.demo-line-name small {
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.demo-lines li .demo-amount {
+  font-variant-numeric: tabular-nums;
+  color: var(--text);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.demo-lines li.is-total {
+  margin-top: 0.35rem;
+  padding-top: 0.6rem;
+  border-top: 1px solid var(--line-strong);
+  color: var(--text);
+  font-weight: 700;
+}
+
+.demo-lines li.is-total .demo-amount {
+  font: 700 1.25rem/1 var(--display);
+  color: var(--ok);
+}
+
 .demo-actions {
   display: flex;
   flex-wrap: wrap;
