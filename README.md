@@ -142,6 +142,18 @@ Asset and form URLs are relative (`styles.css`, `app.js`, `fonts/...`, `api/wait
 
 Link the directory with a trailing slash, or link `index.html` directly. Both Function routes are deployed, so either layout works. If a parent host strips the `/quotepilot` prefix before the request reaches this project, the root route still answers.
 
+## Hero map
+
+The hero shows a dot-matrix map of Europe with example road, sea and air lanes. Vehicles move along the lanes and the lane card cycles through them. Visitors can filter by mode and hover a lane or hub. The lanes are illustrations, not live shipments, and the page says so.
+
+`public/map-data.js` holds the projected dots, hubs and lanes. It is generated, so edit hubs or lanes in `scripts/build-map.mjs` and run:
+
+```bash
+npm run map
+```
+
+The map script uses the `d3-geo`, `topojson-client` and `world-atlas` dev dependencies. The site itself loads no third-party code.
+
 ## Fonts
 
-Fraunces (Undercase Type) and Source Sans 3 are included under the SIL Open Font License. License texts are in `public/fonts/`.
+Space Grotesk (headings), Inter (body) and JetBrains Mono (labels and data) are self-hosted from Fontsource under the SIL Open Font License. License texts are in `public/fonts/`.

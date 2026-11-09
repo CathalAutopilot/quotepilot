@@ -6,11 +6,15 @@
   "type": "module",
   "scripts": {
     "build": "node scripts/build.mjs",
+    "map": "node scripts/build-map.mjs",
     "dev": "wrangler pages dev dist --port 4391 --ip 0.0.0.0 --kv WAITLIST --persist-to .wrangler/state --show-interactive-dev-session=false",
     "start": "npm run build && npm run dev",
     "test": "node --test"
   },
   "devDependencies": {
+    "d3-geo": "^3.1.1",
+    "topojson-client": "^3.1.0",
+    "world-atlas": "^2.0.2",
     "wrangler": "^4.158.0"
   },
   "engines": {
