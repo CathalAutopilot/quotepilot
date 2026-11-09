@@ -744,7 +744,7 @@ svg {
   font-size: clamp(2.7rem, 5.8vw, 4.75rem);
   line-height: 1;
   letter-spacing: -0.03em;
-  max-width: 11ch;
+  max-width: 12ch;
 }
 
 .deck {

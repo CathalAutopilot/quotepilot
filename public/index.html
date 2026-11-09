@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light">
   <meta name="theme-color" content="#f3f8fd">
-  <title>QuotePilot: easier spot quotes for European forwarders</title>
-  <meta name="description" content="QuotePilot is a pre-launch quoting assistant for freight forwarders. It will read quote requests from email, Excel and PDF, price them on your own tariffs and hand your team a draft to approve, starting with sea freight. Join the pilot waitlist for small and mid-size European forwarders and 3PLs, from Autopilot Consultants in Hamburg.">
+  <title>QuotePilot: AI quoting for European freight forwarders</title>
+  <meta name="description" content="QuotePilot is a pre-launch AI quoting assistant for freight forwarders. It will read quote requests from email, Excel and PDF, price them on your own tariffs and hand your team a draft to approve, starting with sea freight. Join the pilot waitlist for small and mid-size European forwarders and 3PLs, from Autopilot Consultants in Hamburg.">
   <meta property="og:title" content="QuotePilot">
-  <meta property="og:description" content="Spot quotes drafted from your own tariffs and approved by your team with a click. Join the pilot waitlist for European freight forwarders and 3PLs.">
+  <meta property="og:description" content="AI drafts the quote from your own tariffs. Your team checks it and hits send. Starting with sea freight. Join the pilot waitlist for European freight forwarders and 3PLs.">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="en">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
@@ -95,8 +95,8 @@
       <div class="wrap hero-inner">
         <div class="hero-copy">
           <p class="eyebrow"><span class="pulse" aria-hidden="true"></span>Starting with sea freight. Pilot places open for European forwarders and 3PLs</p>
-          <h1 id="hero-title">Spot quotes, without the retyping.</h1>
-          <p class="deck">QuotePilot will read the request, price it on your own tariffs and hand your team a ready draft. You check it, click approve and it's on its way. We're starting with sea freight, FCL and LCL, with a small group of forwarders. You're welcome to join.</p>
+          <h1 id="hero-title">AI drafts the quote. You hit send.</h1>
+          <p class="deck">QuotePilot is an AI assistant for your quoting desk. It will read the rate request, price it on your own rate sheets and hand you a ready quote. You check it and hit send. We're starting with sea freight, FCL and LCL, with a small group of forwarders. You're welcome to join.</p>
 
           <form id="waitlist" class="inline-form" action="api/waitlist" method="post" data-waitlist-form aria-label="Join the pilot waitlist">
             <div class="form-banner" data-banner tabindex="-1" hidden></div>
@@ -119,7 +119,7 @@
           <p class="form-note">Just your work email. We'll only write to you about the pilot. <a href="#privacy">Privacy note</a></p>
 
           <ul class="hero-proof">
-            <li><svg aria-hidden="true"><use href="#i-mail"/></svg>Email, Excel and PDF requests</li>
+            <li><svg aria-hidden="true"><use href="#i-mail"/></svg>AI reads email, Excel and PDF requests</li>
             <li><svg aria-hidden="true"><use href="#i-calc"/></svg>Priced on your own tariffs</li>
             <li><svg aria-hidden="true"><use href="#i-check"/></svg>Your team approves every quote in the pilot</li>
           </ul>
@@ -160,7 +160,7 @@
         <div class="section-head">
           <p class="label">How it works</p>
           <h2>Four simple steps from inbox to booking.</h2>
-          <p class="lede">QuotePilot will do the reading, the looking up and the sums. You make the call at step three.</p>
+          <p class="lede">QuotePilot's AI will do the reading, the looking up and the sums. You make the call at step three.</p>
         </div>
         <div class="how-grid">
           <ol class="route">
@@ -169,7 +169,7 @@
               <div>
                 <p class="stop-no">Step 1</p>
                 <h3>The request comes in</h3>
-                <p>A customer asks for a price by email, in a spreadsheet or as a PDF. Even a scan or a photo of a document is fine. QuotePilot will read it and pick out the details: from, to, what is being shipped and when.</p>
+                <p>A customer asks for a price by email, in a spreadsheet or as a PDF. Even a scan or a photo of a document is fine. The AI will read it and pick out the details: from, to, what is being shipped and when.</p>
               </div>
             </li>
             <li class="stop">
@@ -200,7 +200,7 @@
 
           <div class="demo" data-demo hidden>
             <div class="demo-head">
-              <p class="demo-title">Try it with a sample request</p>
+              <p class="demo-title">Try the AI on a sample request</p>
               <div class="demo-tabs" role="group" aria-label="Sample request type">
                 <button type="button" class="chip is-active" data-sample="email" aria-pressed="true"><svg aria-hidden="true"><use href="#i-mail"/></svg>Email</button>
                 <button type="button" class="chip" data-sample="excel" aria-pressed="false"><svg aria-hidden="true"><use href="#i-calc"/></svg>Excel</button>
@@ -339,7 +339,7 @@
         </div>
         <p class="rule"><svg aria-hidden="true"><use href="#i-check"/></svg><span><strong>The approval rule.</strong> During the pilot, and until you switch on autopilot mode, a person on your team approves every quote before it's sent.</span></p>
         <ul class="promise">
-          <li><svg aria-hidden="true"><use href="#i-calc"/></svg><div><h3>Your numbers, not ours</h3><p>Drafts will come from the tariffs and rules you provide.</p></div></li>
+          <li><svg aria-hidden="true"><use href="#i-calc"/></svg><div><h3>Your numbers, not ours</h3><p>The AI reads the request. The price is worked out from the tariffs and rules you provide, so every figure can be traced back to your rate sheet.</p></div></li>
           <li><svg aria-hidden="true"><use href="#i-box"/></svg><div><h3>Joining stores very little</h3><p>The waitlist doesn't connect a mailbox or upload a tariff. It keeps only what you type into the form.</p></div></li>
         </ul>
       </div>
@@ -424,6 +424,10 @@
             <p>Small and mid-size European freight forwarders and 3PLs. In particular owners, operations managers and the sales or quoting team who answer rate requests every day.</p>
           </details>
           <details>
+            <summary>Where does the AI come in?</summary>
+            <p>The AI does the reading and the writing. It will understand a rate request however it arrives, pick out the details, spot what is missing and draft the reply in your wording. The price itself is calculated from your own rate sheets, so the AI never makes up a number.</p>
+          </details>
+          <details>
             <summary>What will it read?</summary>
             <p>Quote requests by email, Excel and PDF, including scans and photos of documents, plus your own rate sheets. It will be able to match a customer's spreadsheet to your layout. It will also read the paperwork that often comes with a request, such as bills of lading, customs documents, invoices, purchase orders, packing lists and transport orders.</p>
           </details>
@@ -471,7 +475,7 @@
           </svg>
           QuotePilot
         </p>
-        <p>Easier spot quotes for small and mid-size European freight forwarders and 3PLs. Built by Autopilot Consultants in Hamburg.</p>
+        <p>AI-drafted quotes for small and mid-size European freight forwarders and 3PLs. Built by Autopilot Consultants in Hamburg.</p>
       </div>
       <div>
         <h2>Contact</h2>

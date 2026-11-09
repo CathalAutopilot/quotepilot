@@ -514,7 +514,7 @@
       out.hidden = false;
       fieldsEl.textContent = "";
       linesEl.textContent = "";
-      status.textContent = "Reading the request...";
+      status.textContent = "The AI is reading the request...";
       let t = 150;
       let pending = null;
       sample.fields.forEach((field, i) => {
