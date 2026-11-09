@@ -1164,6 +1164,214 @@ svg {
   color: var(--muted);
 }
 
+/* Demo: sample request to draft quote */
+
+.demo {
+  padding: 1.5rem;
+  border-radius: 20px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  box-shadow: 0 2px 4px rgba(18, 41, 74, 0.06), 0 30px 60px -28px rgba(18, 41, 74, 0.35);
+}
+
+.demo-head {
+  display: grid;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.demo-title {
+  font: 700 1.25rem/1.2 var(--display);
+}
+
+.demo-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.demo-tabs .chip,
+.demo-answer {
+  border: 1px solid var(--line-strong);
+  background: #fff;
+  color: var(--text);
+  min-height: 2.25rem;
+}
+
+.demo-tabs .chip.is-active {
+  background: var(--text);
+  border-color: var(--text);
+  color: #fff;
+}
+
+.demo-request {
+  padding: 1rem 1.1rem;
+  border-radius: 12px;
+  background: var(--bg-2);
+  font-size: 0.9375rem;
+  color: var(--text-soft);
+}
+
+.demo-request-head {
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: var(--text);
+}
+
+.demo-request.is-pdf {
+  background: #fbfaf5;
+  border: 1px solid var(--line);
+  font-family: ui-monospace, "SFMono-Regular", Menlo, monospace;
+  font-size: 0.8125rem;
+  transform: rotate(-0.6deg);
+}
+
+.demo-sheet {
+  margin: 0;
+  display: grid;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  overflow: hidden;
+  background: #fff;
+}
+
+.demo-sheet div {
+  display: grid;
+  grid-template-columns: 8rem 1fr;
+}
+
+.demo-sheet div + div {
+  border-top: 1px solid var(--line);
+}
+
+.demo-sheet dt,
+.demo-sheet dd {
+  margin: 0;
+  padding: 0.4rem 0.6rem;
+}
+
+.demo-sheet dt {
+  background: var(--panel-2);
+  color: var(--text);
+  font-weight: 600;
+}
+
+.demo-mark {
+  padding: 0.05em 0.15em;
+  border-radius: 4px;
+  background: transparent;
+  color: inherit;
+  transition: background 0.35s, color 0.35s;
+}
+
+.demo-mark.is-read {
+  background: var(--signal);
+  color: var(--signal-ink);
+}
+
+.demo-run {
+  margin-top: 1rem;
+}
+
+.demo-sub {
+  margin: 1.25rem 0 0.5rem;
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: var(--muted);
+}
+
+.demo-fields {
+  margin: 0;
+  display: grid;
+  gap: 0.35rem;
+  font-size: 0.9375rem;
+}
+
+.demo-fields div {
+  display: grid;
+  grid-template-columns: 5.5rem 1fr;
+  gap: 0.5rem;
+  align-items: center;
+  animation: panel-in 0.3s var(--ease);
+}
+
+.demo-fields dt {
+  color: var(--muted);
+}
+
+.demo-fields dd {
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+  font-weight: 600;
+}
+
+.demo-ok,
+.demo-flag {
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.demo-ok {
+  background: var(--ok-bg);
+  color: var(--ok);
+}
+
+.demo-flag {
+  background: var(--signal-soft);
+  color: #8a4b00;
+}
+
+.demo-lines {
+  padding: 0.75rem 0;
+}
+
+.demo-lines li {
+  animation: panel-in 0.3s var(--ease);
+}
+
+.demo-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.demo-actions .button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.demo-status {
+  margin-top: 0.75rem;
+  min-height: 2.8em;
+  font-size: 0.9375rem;
+  color: var(--text-soft);
+}
+
+.demo.is-sent .demo-status {
+  color: var(--ok);
+  font-weight: 600;
+}
+
+.demo-note {
+  margin-top: 0.75rem;
+  font-size: 0.8125rem;
+  color: var(--muted);
+}
+
+.nav-links a[aria-current="true"] {
+  color: var(--text);
+  box-shadow: 0 2px 0 var(--signal);
+}
+
 /* Modes */
 
 .modes {
@@ -1430,11 +1638,32 @@ svg {
 
 .mock-switch {
   position: relative;
+  flex: none;
   width: 3rem;
   height: 1.7rem;
+  padding: 0;
+  border: 0;
   border-radius: 999px;
-  background: #c9d4e3;
+  background: #8fa0b8;
   box-shadow: inset 0 1px 2px rgba(18, 41, 74, 0.2);
+  cursor: pointer;
+  transition: background 0.25s;
+}
+
+.mock-switch::after {
+  transition: transform 0.25s var(--ease);
+}
+
+.mock-switch[aria-checked="true"] {
+  background: var(--ok);
+}
+
+.mock-switch[aria-checked="true"]::after {
+  transform: translateX(1.3rem);
+}
+
+.card-autopilot .mode-demo span {
+  flex: 1 1 12rem;
 }
 
 .mock-switch::after {

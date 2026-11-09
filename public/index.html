@@ -198,7 +198,32 @@
             </li>
           </ol>
 
-          <figure class="waybill">
+          <div class="demo" data-demo hidden>
+            <div class="demo-head">
+              <p class="demo-title">Try it with a sample request</p>
+              <div class="demo-tabs" role="group" aria-label="Sample request type">
+                <button type="button" class="chip is-active" data-sample="email" aria-pressed="true"><svg aria-hidden="true"><use href="#i-mail"/></svg>Email</button>
+                <button type="button" class="chip" data-sample="excel" aria-pressed="false"><svg aria-hidden="true"><use href="#i-calc"/></svg>Excel</button>
+                <button type="button" class="chip" data-sample="pdf" aria-pressed="false"><svg aria-hidden="true"><use href="#i-box"/></svg>Scanned PDF</button>
+              </div>
+            </div>
+            <div class="demo-request" data-demo-request></div>
+            <button type="button" class="button button-small demo-run" data-demo-run>Read it and draft the quote<svg aria-hidden="true"><use href="#i-arrow"/></svg></button>
+            <div class="demo-out" data-demo-out hidden>
+              <p class="demo-sub">What QuotePilot read</p>
+              <dl class="demo-fields" data-demo-fields></dl>
+              <p class="demo-sub">Draft quote</p>
+              <ul class="waybill-lines demo-lines" data-demo-lines></ul>
+              <div class="demo-actions">
+                <button type="button" class="button button-small" data-demo-approve disabled><svg aria-hidden="true"><use href="#i-tick"/></svg>Approve and send</button>
+                <button type="button" class="link-button" data-demo-reset hidden>Try another</button>
+              </div>
+              <p class="demo-status" data-demo-status role="status"></p>
+            </div>
+            <p class="demo-note">Illustration with sample data. No real prices or customers.</p>
+          </div>
+
+          <figure class="waybill" data-demo-fallback>
             <div class="waybill-head">
               <div>
                 <p class="waybill-kicker">Draft quote</p>
@@ -309,7 +334,7 @@
               <li><svg aria-hidden="true"><use href="#i-tick"/></svg>You will switch it on when you trust the drafts, and you will be able to switch it off again.</li>
               <li><svg aria-hidden="true"><use href="#i-tick"/></svg>It isn't part of the pilot.</li>
             </ul>
-            <p class="mode-demo" aria-hidden="true"><span class="mock-switch"></span><span>Autopilot is off until you switch it on.</span></p>
+            <p class="mode-demo"><button type="button" class="mock-switch" role="switch" aria-checked="false" aria-label="Autopilot mode" data-autopilot></button><span data-autopilot-text>Autopilot is off until you switch it on.</span></p>
           </article>
         </div>
         <p class="rule"><svg aria-hidden="true"><use href="#i-check"/></svg><span><strong>The approval rule.</strong> During the pilot, and until you switch on autopilot mode, a person on your team approves every quote before it's sent.</span></p>

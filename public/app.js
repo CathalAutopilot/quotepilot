@@ -8,6 +8,9 @@
   setupTabs();
   setupMap();
   setupForms();
+  setupDemo();
+  setupAutopilot();
+  setupNav();
 
   /* Header: solid background once the page scrolls */
   function setupHeader() {
@@ -349,6 +352,273 @@
     select(lanes[0]);
     startCycle();
     play();
+  }
+
+  /* How it works: a sample request becomes a draft quote. Sample data only. */
+  function setupDemo() {
+    const demo = document.querySelector("[data-demo]");
+    if (!demo) return;
+    const fallback = document.querySelector("[data-demo-fallback]");
+    const SAMPLES = {
+      email: {
+        kind: "email",
+        head: "Subject: Quote please, Hamburg to Milan",
+        body: [
+          "Hello, could you quote ",
+          ["8 pallets", 2],
+          " from ",
+          ["Hamburg", 0],
+          " to ",
+          ["Milan", 1],
+          ", ready ",
+          ["Tuesday", 3],
+          "? We need a ",
+          ["tail lift", 4],
+          " at delivery. Thanks.",
+        ],
+        fields: [["From", "Hamburg"], ["To", "Milan"], ["Load", "8 pallets"], ["Ready", "Tuesday"], ["Extra", "Tail lift"]],
+        lines: [
+          ["Base freight", "your pallet tariff"],
+          ["Fuel surcharge", "your current rate"],
+          ["Tolls", "applied"],
+          ["Tail lift", "added, as requested"],
+          ["Margin", "your rule for this customer"],
+        ],
+      },
+      excel: {
+        kind: "excel",
+        head: "request.xlsx",
+        rows: [
+          ["Origin", ["Rotterdam", 0]],
+          ["Destination", ["Dublin", 1]],
+          ["Service", ["LCL", 2]],
+          ["Volume", ["6.2 cbm", 3]],
+          ["Gross weight", ["2,100 kg", 4]],
+        ],
+        fields: [["From", "Rotterdam"], ["To", "Dublin"], ["Service", "Sea, LCL"], ["Volume", "6.2 cbm"], ["Weight", "2,100 kg"], ["Stackable", null]],
+        ask: "The sheet doesn't say if the goods can be stacked. Can they?",
+        lines: [
+          ["Base freight", "your weight or measure tariff"],
+          ["BAF", "applied"],
+          ["ETS", "applied"],
+          ["Margin", "your rule for this customer"],
+        ],
+      },
+      pdf: {
+        kind: "pdf",
+        head: "TRANSPORT ORDER (scan)",
+        rows: [
+          ["Pickup", ["Frankfurt", 0]],
+          ["Deliver to", ["Dublin", 1]],
+          ["Pieces", ["3 cartons", 2]],
+          ["Each", ["60 x 40 x 40 cm", 3]],
+          ["Gross", ["140 kg", 4]],
+        ],
+        fields: [["From", "Frankfurt"], ["To", "Dublin"], ["Pieces", "3 cartons"], ["Size", "60 x 40 x 40 cm each"], ["Weight", "140 kg"]],
+        lines: [
+          ["Chargeable weight", "worked out from weight and volume"],
+          ["Air rate", "your rate sheet"],
+          ["Fuel and security", "applied"],
+          ["Margin", "your rule for this customer"],
+        ],
+      },
+    };
+
+    const request = demo.querySelector("[data-demo-request]");
+    const out = demo.querySelector("[data-demo-out]");
+    const fieldsEl = demo.querySelector("[data-demo-fields]");
+    const linesEl = demo.querySelector("[data-demo-lines]");
+    const run = demo.querySelector("[data-demo-run]");
+    const approve = demo.querySelector("[data-demo-approve]");
+    const reset = demo.querySelector("[data-demo-reset]");
+    const status = demo.querySelector("[data-demo-status]");
+    const tabs = Array.from(demo.querySelectorAll("[data-sample]"));
+    let current = "email";
+    let timers = [];
+    let marks = [];
+
+    const make = (tag, cls, text) => {
+      const node = document.createElement(tag);
+      if (cls) node.className = cls;
+      if (text != null) node.textContent = text;
+      return node;
+    };
+    const later = (fn, ms) => {
+      if (reduceMotion) fn();
+      else timers.push(setTimeout(fn, ms));
+    };
+    const mark = (pair) => {
+      const node = make("mark", "demo-mark", pair[0]);
+      marks[pair[1]] = node;
+      return node;
+    };
+
+    const show = (name) => {
+      timers.forEach(clearTimeout);
+      timers = [];
+      marks = [];
+      current = name;
+      const sample = SAMPLES[name];
+      tabs.forEach((tab) => {
+        const on = tab.dataset.sample === name;
+        tab.classList.toggle("is-active", on);
+        tab.setAttribute("aria-pressed", String(on));
+      });
+      request.textContent = "";
+      request.className = `demo-request is-${sample.kind}`;
+      request.appendChild(make("p", "demo-request-head", sample.head));
+      if (sample.body) {
+        const para = make("p", "demo-request-body");
+        sample.body.forEach((part) => {
+          para.appendChild(typeof part === "string" ? document.createTextNode(part) : mark(part));
+        });
+        request.appendChild(para);
+      } else {
+        const table = make("dl", "demo-sheet");
+        sample.rows.forEach((row) => {
+          const wrap = make("div");
+          wrap.appendChild(make("dt", "", row[0]));
+          const dd = make("dd");
+          dd.appendChild(mark(row[1]));
+          wrap.appendChild(dd);
+          table.appendChild(wrap);
+        });
+        request.appendChild(table);
+      }
+      out.hidden = true;
+      run.hidden = false;
+      reset.hidden = true;
+      approve.disabled = true;
+      approve.hidden = false;
+      status.textContent = "";
+      demo.classList.remove("is-sent");
+    };
+
+    const finish = (sample, confirmed) => {
+      approve.disabled = false;
+      status.textContent = confirmed
+        ? "Thanks. The draft is ready. Nothing goes out until you approve it."
+        : "The draft is ready. Nothing goes out until you approve it.";
+    };
+
+    const start = () => {
+      const sample = SAMPLES[current];
+      run.hidden = true;
+      out.hidden = false;
+      fieldsEl.textContent = "";
+      linesEl.textContent = "";
+      status.textContent = "Reading the request...";
+      let t = 150;
+      let pending = null;
+      sample.fields.forEach((field, i) => {
+        later(() => {
+          if (marks[i]) marks[i].classList.add("is-read");
+          const wrap = make("div", field[1] === null ? "is-unsure" : "");
+          wrap.appendChild(make("dt", "", field[0]));
+          const dd = make("dd");
+          if (field[1] === null) {
+            dd.appendChild(make("span", "demo-flag", "Not stated"));
+            pending = dd;
+          } else {
+            dd.textContent = field[1];
+            dd.appendChild(make("span", "demo-ok", "ok"));
+          }
+          wrap.appendChild(dd);
+          fieldsEl.appendChild(wrap);
+        }, t);
+        t += 320;
+      });
+      later(() => {
+        status.textContent = "Pricing it on your tariff...";
+      }, t);
+      t += 250;
+      sample.lines.forEach((line) => {
+        later(() => {
+          const li = make("li");
+          li.appendChild(make("span", "", line[0]));
+          li.appendChild(make("span", "dots"));
+          li.appendChild(make("span", "", line[1]));
+          linesEl.appendChild(li);
+        }, t);
+        t += 260;
+      });
+      later(() => {
+        if (!sample.ask) {
+          finish(sample, false);
+          return;
+        }
+        status.textContent = sample.ask;
+        const yes = make("button", "chip demo-answer", "Yes");
+        const no = make("button", "chip demo-answer", "No");
+        [yes, no].forEach((button) => {
+          button.type = "button";
+          button.addEventListener("click", () => {
+            pending.textContent = button.textContent;
+            pending.appendChild(make("span", "demo-ok", "you confirmed"));
+            pending.parentNode.classList.remove("is-unsure");
+            finish(sample, true);
+          });
+        });
+        pending.appendChild(yes);
+        pending.appendChild(no);
+      }, t);
+    };
+
+    tabs.forEach((tab) => tab.addEventListener("click", () => show(tab.dataset.sample)));
+    run.addEventListener("click", start);
+    approve.addEventListener("click", () => {
+      approve.hidden = true;
+      reset.hidden = false;
+      demo.classList.add("is-sent");
+      status.textContent = "Sent, because you approved it. That click is step three, and in the pilot every quote needs it.";
+      reset.focus();
+    });
+    reset.addEventListener("click", () => {
+      const order = ["email", "excel", "pdf"];
+      show(order[(order.indexOf(current) + 1) % order.length]);
+      run.focus();
+    });
+
+    show("email");
+    demo.hidden = false;
+    if (fallback) fallback.hidden = true;
+  }
+
+  /* Modes: the autopilot switch is a preview of a future option */
+  function setupAutopilot() {
+    const toggle = document.querySelector("[data-autopilot]");
+    const text = document.querySelector("[data-autopilot-text]");
+    if (!toggle || !text) return;
+    const off = text.textContent;
+    toggle.addEventListener("click", () => {
+      const on = toggle.getAttribute("aria-checked") !== "true";
+      toggle.setAttribute("aria-checked", String(on));
+      text.textContent = on
+        ? "That's the idea: one switch, and only you can flip it. It isn't part of the pilot, so this one is just for show."
+        : off;
+    });
+  }
+
+  /* Header: mark the section you are reading */
+  function setupNav() {
+    const links = Array.from(document.querySelectorAll('.nav-links a[href^="#"]'));
+    if (!links.length || !("IntersectionObserver" in window)) return;
+    const byId = new Map(links.map((link) => [link.getAttribute("href").slice(1), link]));
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          links.forEach((link) => link.removeAttribute("aria-current"));
+          const link = byId.get(entry.target.id);
+          if (link) link.setAttribute("aria-current", "true");
+        });
+      },
+      { rootMargin: "-45% 0px -50% 0px" },
+    );
+    byId.forEach((link, id) => {
+      const section = document.getElementById(id);
+      if (section) io.observe(section);
+    });
   }
 
   /* Waitlist forms */
