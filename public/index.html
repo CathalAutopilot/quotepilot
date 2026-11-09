@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light">
   <meta name="theme-color" content="#f3f8fd">
-  <title>QuotePilot: easier spot quotes for European forwarders</title>
-  <meta name="description" content="QuotePilot is a pre-launch quoting assistant for freight forwarders. It will read quote requests from email, Excel and PDF, price them on your own tariffs and hand your team a draft to approve. Join the pilot waitlist for small and mid-size European forwarders and 3PLs, from Autopilot Consultants in Hamburg.">
+  <title>QuotePilot: AI quoting for European freight forwarders</title>
+  <meta name="description" content="QuotePilot is a pre-launch AI quoting assistant for freight forwarders. It will read quote requests from email, Excel and PDF, price them on your own tariffs and hand your team a draft to approve, starting with sea freight. Join the pilot waitlist for small and mid-size European forwarders and 3PLs, from Autopilot Consultants in Hamburg.">
   <meta property="og:title" content="QuotePilot">
-  <meta property="og:description" content="Spot quotes drafted from your own tariffs and approved by your team with a click. Join the pilot waitlist for European freight forwarders and 3PLs.">
+  <meta property="og:description" content="AI drafts the quote from your own tariffs. Your team checks it and hits send. Starting with sea freight. Join the pilot waitlist for European freight forwarders and 3PLs.">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="en">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
@@ -48,7 +48,7 @@
         <ul class="nav-links">
           <li><a href="#problem">Why speed</a></li>
           <li><a href="#how">How it works</a></li>
-          <li><a href="#freight">Road, sea and air</a></li>
+          <li><a href="#freight">Sea freight first</a></li>
           <li><a href="#modes">Co-pilot and autopilot</a></li>
           <li><a href="#pilot">Pilot</a></li>
           <li><a href="#faq">FAQ</a></li>
@@ -73,15 +73,15 @@
             <button type="button" class="chip chip-sea" data-mode="sea" aria-pressed="false"><svg aria-hidden="true"><use href="#i-ship"/></svg>Sea</button>
             <button type="button" class="chip chip-air" data-mode="air" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plane"/></svg>Air</button>
           </div>
-          <div class="lane-card" data-lane-card aria-live="polite">
+          <div class="lane-card" data-lane-card data-mode="sea" aria-live="polite">
             <div class="lane-card-top">
-              <span class="lane-mode" data-lane-mode>Road</span>
+              <span class="lane-mode" data-lane-mode>Sea</span>
               <span class="lane-tag">Example lane</span>
             </div>
-            <p class="lane-route"><span data-lane-from>Hamburg</span><svg aria-hidden="true"><use href="#i-arrow"/></svg><span data-lane-to>Milan</span></p>
+            <p class="lane-route"><span data-lane-from>Rotterdam</span><svg aria-hidden="true"><use href="#i-arrow"/></svg><span data-lane-to>Felixstowe</span></p>
             <dl class="lane-meta">
-              <div><dt>Load</dt><dd data-lane-load>FTL, 33 pallets</dd></div>
-              <div><dt>Rated on</dt><dd data-lane-basis>Loading metre tariff</dd></div>
+              <div><dt>Load</dt><dd data-lane-load>LCL, 8 cbm</dd></div>
+              <div><dt>Rated on</dt><dd data-lane-basis>W/M + BAF</dd></div>
             </dl>
             <ol class="lane-steps" data-lane-steps>
               <li>Request in</li>
@@ -94,9 +94,9 @@
 
       <div class="wrap hero-inner">
         <div class="hero-copy">
-          <p class="eyebrow"><span class="pulse" aria-hidden="true"></span>Pilot places open for European forwarders and 3PLs</p>
-          <h1 id="hero-title">Spot quotes, without the retyping.</h1>
-          <p class="deck">QuotePilot will read the request, price it on your own tariffs and hand your team a ready draft. You check it, click approve and it's on its way. We're building it with a small group of forwarders, and you're welcome to join.</p>
+          <p class="eyebrow"><span class="pulse" aria-hidden="true"></span>Starting with sea freight. Pilot places open for European forwarders and 3PLs</p>
+          <h1 id="hero-title">AI drafts<br>the quote.<br>You hit send.</h1>
+          <p class="deck">QuotePilot is an AI assistant for your quoting desk. It will read the rate request, price it on your own rate sheets and hand you a ready quote. You check it and hit send. We're starting with sea freight, FCL and LCL, with a small group of forwarders. You're welcome to join.</p>
 
           <form id="waitlist" class="inline-form" action="api/waitlist" method="post" data-waitlist-form aria-label="Join the pilot waitlist">
             <div class="form-banner" data-banner tabindex="-1" hidden></div>
@@ -119,7 +119,7 @@
           <p class="form-note">Just your work email. We'll only write to you about the pilot. <a href="#privacy">Privacy note</a></p>
 
           <ul class="hero-proof">
-            <li><svg aria-hidden="true"><use href="#i-mail"/></svg>Email, Excel and PDF requests</li>
+            <li><svg aria-hidden="true"><use href="#i-mail"/></svg>AI reads email, Excel and PDF requests</li>
             <li><svg aria-hidden="true"><use href="#i-calc"/></svg>Priced on your own tariffs</li>
             <li><svg aria-hidden="true"><use href="#i-check"/></svg>Your team approves every quote in the pilot</li>
           </ul>
@@ -159,8 +159,8 @@
       <div class="wrap">
         <div class="section-head">
           <p class="label">How it works</p>
-          <h2>Four steps from inbox to booking.</h2>
-          <p class="lede">QuotePilot will do the reading, the looking up and the sums. Your team makes the call at step three.</p>
+          <h2>Four simple steps from inbox to booking.</h2>
+          <p class="lede">QuotePilot's AI will do the reading, the looking up and the sums. You make the call at step three.</p>
         </div>
         <div class="how-grid">
           <ol class="route">
@@ -168,39 +168,39 @@
               <span class="stop-icon"><svg aria-hidden="true"><use href="#i-mail"/></svg></span>
               <div>
                 <p class="stop-no">Step 1</p>
-                <h3>Intake</h3>
-                <p>QuotePilot will read quote requests from email, Excel and PDF, alongside the rate sheets and tariffs you already use. It will map a customer's spreadsheet onto your template and use OCR on scans, covering rate sheets, bills of lading, customs documents, invoices, POs, packing lists and transport orders.</p>
+                <h3>The request comes in</h3>
+                <p>A customer asks for a price by email, in a spreadsheet or as a PDF. Even a scan or a photo of a document is fine. The AI will read it and pick out the details: from, to, what is being shipped and when.</p>
               </div>
             </li>
             <li class="stop">
               <span class="stop-icon"><svg aria-hidden="true"><use href="#i-calc"/></svg></span>
               <div>
                 <p class="stop-no">Step 2</p>
-                <h3>Draft the quote</h3>
-                <p>It will price the job from your tariffs, surcharges and margin rules. Road, sea and air each keep the rating basis your team already works with.</p>
+                <h3>The quote is drafted</h3>
+                <p>It will look up your own rates, add your surcharges and your margin, and work out the price, the same way you would by hand.</p>
               </div>
             </li>
             <li class="stop stop-key">
               <span class="stop-icon"><svg aria-hidden="true"><use href="#i-check"/></svg></span>
               <div>
                 <p class="stop-no">Step 3</p>
-                <h3>Your team approves</h3>
-                <p>Someone on your desk checks the draft, adjusts it if needed and approves it with a click. During the pilot, nothing goes to a customer without that approval.</p>
+                <h3>You check and send</h3>
+                <p>You see the draft with the working behind it. Change anything you like, then approve it with a click. During the pilot, nothing goes to a customer without that approval.</p>
               </div>
             </li>
             <li class="stop">
               <span class="stop-icon"><svg aria-hidden="true"><use href="#i-box"/></svg></span>
               <div>
                 <p class="stop-no">Step 4</p>
-                <h3>Booking</h3>
-                <p>When the customer says yes, QuotePilot will carry the accepted quote into a booking, so nobody retypes the details.</p>
+                <h3>The booking is ready</h3>
+                <p>When the customer says yes, the details will carry over into a booking, so nobody types them in again.</p>
               </div>
             </li>
           </ol>
 
           <div class="demo" data-demo hidden>
             <div class="demo-head">
-              <p class="demo-title">Try it with a sample request</p>
+              <p class="demo-title">Try the AI on a sample request</p>
               <div class="demo-tabs" role="group" aria-label="Sample request type">
                 <button type="button" class="chip is-active" data-sample="email" aria-pressed="true"><svg aria-hidden="true"><use href="#i-mail"/></svg>Email</button>
                 <button type="button" class="chip" data-sample="excel" aria-pressed="false"><svg aria-hidden="true"><use href="#i-calc"/></svg>Excel</button>
@@ -220,28 +220,28 @@
               </div>
               <p class="demo-status" data-demo-status role="status"></p>
             </div>
-            <p class="demo-note">Illustration with sample data. No real prices or customers.</p>
+            <p class="demo-note">Sample figures to show how it works. They are an indication only, not real rates and not an offer. The 15% margin is an example. You set your own.</p>
           </div>
 
           <figure class="waybill" data-demo-fallback>
             <div class="waybill-head">
               <div>
                 <p class="waybill-kicker">Draft quote</p>
-                <p class="waybill-route">HAM <svg aria-hidden="true"><use href="#i-arrow"/></svg> MIL</p>
+                <p class="waybill-route">SHA <svg aria-hidden="true"><use href="#i-arrow"/></svg> RTM</p>
               </div>
               <p class="stamp">Ready for review</p>
             </div>
             <dl class="waybill-grid">
-              <div><dt>Source</dt><dd>Customer email + Excel</dd></div>
-              <div><dt>Mode</dt><dd>Road, FTL</dd></div>
-              <div><dt>Rated on</dt><dd>Your loading metre tariff</dd></div>
+              <div><dt>Source</dt><dd>Customer email</dd></div>
+              <div><dt>Mode</dt><dd>Sea, FCL</dd></div>
+              <div><dt>Rated on</dt><dd>Your FCL tariff</dd></div>
               <div><dt>Margin</dt><dd>Your rules for this customer</dd></div>
             </dl>
             <ul class="waybill-lines">
-              <li><span>Base freight</span><span class="dots"></span><span>tariff</span></li>
-              <li><span>Fuel surcharge</span><span class="dots"></span><span>applied</span></li>
-              <li><span>Tolls</span><span class="dots"></span><span>applied</span></li>
-              <li><span>Tail lift</span><span class="dots"></span><span>on request</span></li>
+              <li><span>Ocean freight</span><span class="dots"></span><span>tariff</span></li>
+              <li><span>BAF</span><span class="dots"></span><span>applied</span></li>
+              <li><span>ETS</span><span class="dots"></span><span>applied</span></li>
+              <li><span>Margin</span><span class="dots"></span><span>your rule</span></li>
             </ul>
             <div class="waybill-foot">
               <span class="mock-button" aria-hidden="true"><svg><use href="#i-tick"/></svg>Approve and send</span>
@@ -256,19 +256,29 @@
     <section id="freight" class="section">
       <div class="wrap">
         <div class="section-head">
-          <p class="label">Road, sea and air</p>
-          <h2>Your tariffs, the way you already use them.</h2>
-          <p class="lede">The draft will follow the freight mode on the request and the tariff structure you already have. There's no new rate logic to learn.</p>
+          <p class="label">Sea freight first</p>
+          <h2>Starting with sea freight, on your own tariffs.</h2>
+          <p class="lede">The first pilots will quote sea freight, FCL and LCL, from the rate sheets you already use. There's no new rate logic to learn. Road and air are planned to follow.</p>
         </div>
         <div class="modes" data-tabs>
           <div class="mode-tabs" role="tablist" aria-label="Freight modes">
-            <button type="button" role="tab" id="tab-road" aria-controls="panel-road" aria-selected="true" class="mode-tab tab-road"><svg aria-hidden="true"><use href="#i-truck"/></svg>Road</button>
-            <button type="button" role="tab" id="tab-sea" aria-controls="panel-sea" aria-selected="false" tabindex="-1" class="mode-tab tab-sea"><svg aria-hidden="true"><use href="#i-ship"/></svg>Sea</button>
+            <button type="button" role="tab" id="tab-sea" aria-controls="panel-sea" aria-selected="true" class="mode-tab tab-sea"><svg aria-hidden="true"><use href="#i-ship"/></svg>Sea</button>
+            <button type="button" role="tab" id="tab-road" aria-controls="panel-road" aria-selected="false" tabindex="-1" class="mode-tab tab-road"><svg aria-hidden="true"><use href="#i-truck"/></svg>Road</button>
             <button type="button" role="tab" id="tab-air" aria-controls="panel-air" aria-selected="false" tabindex="-1" class="mode-tab tab-air"><svg aria-hidden="true"><use href="#i-plane"/></svg>Air</button>
           </div>
-          <div class="mode-panel panel-road" role="tabpanel" id="panel-road" aria-labelledby="tab-road" tabindex="0">
+          <div class="mode-panel panel-sea" role="tabpanel" id="panel-sea" aria-labelledby="tab-sea" tabindex="0">
             <div>
-              <p class="mode-scope">FTL, LTL and groupage</p>
+              <p class="mode-scope">Where we start: FCL and LCL</p>
+              <h3>Sea freight</h3>
+              <p>FCL priced per container and LCL by weight or measure, with the surcharges that matter on the lane, including BAF, CAF and ETS, and the other charges on your rate sheet.</p>
+            </div>
+            <ul class="mode-tags">
+              <li>FCL per container</li><li>LCL by weight or measure</li><li>BAF</li><li>CAF</li><li>ETS</li>
+            </ul>
+          </div>
+          <div class="mode-panel panel-road" role="tabpanel" id="panel-road" aria-labelledby="tab-road" tabindex="0" hidden>
+            <div>
+              <p class="mode-scope">Planned next: FTL, LTL and groupage</p>
               <h3>Road freight</h3>
               <p>Pallet, loading metre, weight band and zone tariffs, with minimum charges and chargeable weight handled the way your rate sheet says.</p>
             </div>
@@ -276,19 +286,9 @@
               <li>Pallet tariffs</li><li>Loading metres</li><li>Weight bands</li><li>Zones</li><li>Minimum charges</li><li>Chargeable weight</li>
             </ul>
           </div>
-          <div class="mode-panel panel-sea" role="tabpanel" id="panel-sea" aria-labelledby="tab-sea" tabindex="0" hidden>
-            <div>
-              <p class="mode-scope">LCL and FCL</p>
-              <h3>Sea freight</h3>
-              <p>LCL by weight or measure, FCL per container, with the surcharges that matter on the lane, including BAF, CAF and ETS.</p>
-            </div>
-            <ul class="mode-tags">
-              <li>W/M rating</li><li>Per container</li><li>BAF</li><li>CAF</li><li>ETS</li>
-            </ul>
-          </div>
           <div class="mode-panel panel-air" role="tabpanel" id="panel-air" aria-labelledby="tab-air" tabindex="0" hidden>
             <div>
-              <p class="mode-scope">Chargeable weight</p>
+              <p class="mode-scope">Planned next: chargeable weight</p>
               <h3>Air freight</h3>
               <p>Air rates worked out on chargeable weight, straight from your own rate sheets.</p>
             </div>
@@ -298,7 +298,7 @@
           </div>
         </div>
         <div class="extras">
-          <p>The extras that decide the margin, included when they're on the job:</p>
+          <p>For road jobs later on, the extras that decide the margin:</p>
           <ul>
             <li>Tolls</li><li>Fuel</li><li>Waiting time</li><li>Extra stops</li><li>Tail lift</li><li>Urgency</li>
           </ul>
@@ -339,7 +339,7 @@
         </div>
         <p class="rule"><svg aria-hidden="true"><use href="#i-check"/></svg><span><strong>The approval rule.</strong> During the pilot, and until you switch on autopilot mode, a person on your team approves every quote before it's sent.</span></p>
         <ul class="promise">
-          <li><svg aria-hidden="true"><use href="#i-calc"/></svg><div><h3>Your numbers, not ours</h3><p>Drafts will come from the tariffs and rules you provide.</p></div></li>
+          <li><svg aria-hidden="true"><use href="#i-calc"/></svg><div><h3>Your numbers, not ours</h3><p>The AI reads the request. The price is worked out from the tariffs and rules you provide, so every figure can be traced back to your rate sheet.</p></div></li>
           <li><svg aria-hidden="true"><use href="#i-box"/></svg><div><h3>Joining stores very little</h3><p>The waitlist doesn't connect a mailbox or upload a tariff. It keeps only what you type into the form.</p></div></li>
         </ul>
       </div>
@@ -350,9 +350,9 @@
         <div>
           <p class="label">The pilot</p>
           <h2>Start with one lane. We'll measure it together.</h2>
-          <p class="lede">We're taking on a handful of forwarders as design partners before launch. You pick one repeat lane or tariff, we set QuotePilot up on it with you, and together we time the journey from request received, to quote sent, to booking. Your feedback will shape what we build next.</p>
+          <p class="lede">We're taking on a handful of forwarders as design partners before launch. You pick one repeat sea lane or tariff, we set QuotePilot up on it with you, and together we time the journey from request received, to quote sent, to booking. Your feedback will shape what we build next.</p>
           <ol class="pilot-steps">
-            <li><span>1</span>Pick one repeat lane or tariff</li>
+            <li><span>1</span>Pick one repeat sea lane or tariff</li>
             <li><span>2</span>We set QuotePilot up on it with you</li>
             <li><span>3</span>We measure request to quote to booking together</li>
           </ol>
@@ -424,12 +424,16 @@
             <p>Small and mid-size European freight forwarders and 3PLs. In particular owners, operations managers and the sales or quoting team who answer rate requests every day.</p>
           </details>
           <details>
+            <summary>Where does the AI come in?</summary>
+            <p>The AI does the reading and the writing. It will understand a rate request however it arrives, pick out the details, spot what is missing and draft the reply in your wording. The price itself is calculated from your own rate sheets, so the AI never makes up a number.</p>
+          </details>
+          <details>
             <summary>What will it read?</summary>
-            <p>Incoming quote requests in email, Excel and PDF, plus your rate sheets and tariffs. It will be able to map a customer's Excel file onto your template. OCR will cover rate sheets, bills of lading and master bills, customs documents, invoices, purchase orders, packing lists and transport orders.</p>
+            <p>Quote requests by email, Excel and PDF, including scans and photos of documents, plus your own rate sheets. It will be able to match a customer's spreadsheet to your layout. It will also read the paperwork that often comes with a request, such as bills of lading, customs documents, invoices, purchase orders, packing lists and transport orders.</p>
           </details>
           <details>
             <summary>Which freight modes will be covered?</summary>
-            <p>Road (FTL, LTL and groupage, with pallet, loading metre, weight band and zone tariffs, minimum charges and chargeable weight), sea (LCL by weight or measure, FCL per container, and surcharges such as BAF, CAF and ETS) and air (chargeable weight). Extras will include tolls, fuel, waiting time, extra stops, tail lift and urgency.</p>
+            <p>Sea freight first: FCL per container and LCL by weight or measure, with surcharges such as BAF, CAF and ETS. Road (FTL, LTL and groupage) and air are planned to follow, each priced the way your own rate sheets work.</p>
           </details>
           <details>
             <summary>Will a quote ever go out on its own?</summary>
@@ -437,7 +441,7 @@
           </details>
           <details>
             <summary>What does the pilot involve?</summary>
-            <p>A handful of forwarders, starting with one repeat lane or tariff each. We set QuotePilot up on it with you, and together we measure the time from request received, to quote sent, to booking. QuotePilot is pre-launch, so pilot partners help shape it.</p>
+            <p>A handful of forwarders, starting with one repeat sea lane or tariff each. We set QuotePilot up on it with you, and together we measure the time from request received, to quote sent, to booking. QuotePilot is pre-launch, so pilot partners help shape it.</p>
           </details>
           <details>
             <summary>Who is behind it?</summary>
@@ -471,7 +475,7 @@
           </svg>
           QuotePilot
         </p>
-        <p>Easier spot quotes for small and mid-size European freight forwarders and 3PLs. Built by Autopilot Consultants in Hamburg.</p>
+        <p>AI-drafted quotes for small and mid-size European freight forwarders and 3PLs. Built by Autopilot Consultants in Hamburg.</p>
       </div>
       <div>
         <h2>Contact</h2>
@@ -483,7 +487,7 @@
         <ul class="footer-links">
           <li><a href="#problem">Why speed</a></li>
           <li><a href="#how">How it works</a></li>
-          <li><a href="#freight">Road, sea and air</a></li>
+          <li><a href="#freight">Sea freight first</a></li>
           <li><a href="#modes">Co-pilot and autopilot</a></li>
           <li><a href="#pilot">Pilot</a></li>
           <li><a href="#faq">FAQ</a></li>
