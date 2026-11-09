@@ -4,7 +4,6 @@
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   setupHeader();
-  setupReveal();
   setupRoute();
   setupTabs();
   setupMap();
@@ -17,27 +16,6 @@
     const update = () => header.classList.toggle("is-scrolled", window.scrollY > 12);
     update();
     window.addEventListener("scroll", update, { passive: true });
-  }
-
-  /* Fade sections in as they enter the viewport */
-  function setupReveal() {
-    const items = document.querySelectorAll(".reveal");
-    if (!("IntersectionObserver" in window) || reduceMotion) {
-      items.forEach((el) => el.classList.add("is-in"));
-      return;
-    }
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("is-in");
-            io.unobserve(entry.target);
-          }
-        });
-      },
-      { rootMargin: "0px 0px -8% 0px", threshold: 0.08 },
-    );
-    items.forEach((el) => io.observe(el));
   }
 
   /* How it works: the route line fills as you scroll past each stop */
@@ -98,7 +76,7 @@
     });
   }
 
-  /* Hero: live map of example European lanes */
+  /* Hero: animated map of example European lanes */
   function setupMap() {
     const host = document.querySelector("[data-map]");
     const stage = document.querySelector("[data-map-stage]");
@@ -504,7 +482,7 @@
         const message = form.querySelector("[data-success-message]");
         const title = form.querySelector("[data-success-title]");
         message.textContent =
-          body.message || "You are on the pilot waitlist. We will write to the work email you gave.";
+          body.message || "You're on the pilot waitlist. We'll write to the work email you gave.";
         form.querySelector("[data-fields]").hidden = true;
         success.hidden = false;
         title.focus({ preventScroll: true });

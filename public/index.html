@@ -3,17 +3,17 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="color-scheme" content="dark">
-  <meta name="theme-color" content="#060b14">
-  <title>QuotePilot: spot quotes for European forwarders</title>
-  <meta name="description" content="QuotePilot reads freight quote requests from email, Excel and PDF, prices them against your own tariffs and puts a draft in front of your team to approve. Pilot waitlist for small and mid-size European forwarders and 3PLs, by Autopilot Consultants in Hamburg.">
+  <meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#f3f8fd">
+  <title>QuotePilot: easier spot quotes for European forwarders</title>
+  <meta name="description" content="QuotePilot is a pre-launch quoting assistant for freight forwarders. It will read quote requests from email, Excel and PDF, price them on your own tariffs and hand your team a draft to approve. Join the pilot waitlist for small and mid-size European forwarders and 3PLs, from Autopilot Consultants in Hamburg.">
   <meta property="og:title" content="QuotePilot">
-  <meta property="og:description" content="Spot quotes drafted from your own tariffs in minutes, approved by your team. Pilot waitlist for European freight forwarders and 3PLs.">
+  <meta property="og:description" content="Spot quotes drafted from your own tariffs and approved by your team with a click. Join the pilot waitlist for European freight forwarders and 3PLs.">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="en">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="preload" href="fonts/space-grotesk-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/bricolage-grotesque-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/figtree-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="styles.css">
   <script src="map-data.js" defer></script>
   <script src="app.js" defer></script>
@@ -30,16 +30,17 @@
     <symbol id="i-check" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M8 12.3l2.7 2.7L16.2 9.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
     <symbol id="i-box" viewBox="0 0 24 24"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M4 7.5l8 4.5 8-4.5M12 12v9" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
     <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-tick" viewBox="0 0 24 24"><path d="M5.5 12.5l4.2 4.2L18.5 8" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
   </svg>
 
   <header class="site-header" data-header>
     <div class="wrap header-bar">
       <a class="brand" href="index.html" aria-label="QuotePilot home">
         <svg class="mark" viewBox="0 0 32 32" width="32" height="32" aria-hidden="true">
-          <rect x="1" y="1" width="30" height="30" rx="8" fill="#ff7a1a"/>
-          <path d="M8 21.5c3.5 0 4-11 8-11s4.5 11 8 11" fill="none" stroke="#060b14" stroke-width="2.4" stroke-linecap="round"/>
-          <circle cx="8" cy="21.5" r="2.4" fill="#060b14"/>
-          <circle cx="24" cy="21.5" r="2.4" fill="#060b14"/>
+          <rect x="1" y="1" width="30" height="30" rx="8" fill="#12294a"/>
+          <path d="M8 21.5c3.5 0 4-11 8-11s4.5 11 8 11" fill="none" stroke="#ffc83d" stroke-width="2.4" stroke-linecap="round"/>
+          <circle cx="8" cy="21.5" r="2.4" fill="#ffc83d"/>
+          <circle cx="24" cy="21.5" r="2.4" fill="#ffc83d"/>
         </svg>
         <span class="brand-name">QuotePilot</span>
       </a>
@@ -47,7 +48,8 @@
         <ul class="nav-links">
           <li><a href="#problem">Why speed</a></li>
           <li><a href="#how">How it works</a></li>
-          <li><a href="#modes">Modes</a></li>
+          <li><a href="#freight">Road, sea and air</a></li>
+          <li><a href="#modes">Co-pilot and autopilot</a></li>
           <li><a href="#pilot">Pilot</a></li>
           <li><a href="#faq">FAQ</a></li>
         </ul>
@@ -58,7 +60,7 @@
 
   <main id="content">
     <noscript>
-      <p class="noscript">Scripts are off in this browser. The live map is hidden, but the waitlist forms still work and you will get a confirmation page.</p>
+      <p class="noscript">Scripts are off in this browser, so the map is hidden. The waitlist forms still work, and you'll get a confirmation page.</p>
     </noscript>
 
     <section class="hero" aria-labelledby="hero-title">
@@ -84,7 +86,7 @@
             <ol class="lane-steps" data-lane-steps>
               <li>Request in</li>
               <li>Draft priced</li>
-              <li>Your team sends</li>
+              <li>You approve</li>
             </ol>
           </div>
         </div>
@@ -92,9 +94,9 @@
 
       <div class="wrap hero-inner">
         <div class="hero-copy">
-          <p class="eyebrow"><span class="pulse" aria-hidden="true"></span>Pilot open for European forwarders and 3PLs</p>
-          <h1 id="hero-title">Quote the load <em>before</em> the shipper asks someone else.</h1>
-          <p class="deck">QuotePilot reads the request, prices it against your own tariffs and puts a ready draft in front of your team. You check it. You send it. You win the freight.</p>
+          <p class="eyebrow"><span class="pulse" aria-hidden="true"></span>Pilot places open for European forwarders and 3PLs</p>
+          <h1 id="hero-title">Spot quotes, without the retyping.</h1>
+          <p class="deck">QuotePilot will read the request, price it on your own tariffs and hand your team a ready draft. You check it, click approve and it's on its way. We're building it with a small group of forwarders, and you're welcome to join.</p>
 
           <form id="waitlist" class="inline-form" action="api/waitlist" method="post" data-waitlist-form aria-label="Join the pilot waitlist">
             <div class="form-banner" data-banner tabindex="-1" hidden></div>
@@ -109,17 +111,17 @@
               <p id="hero-email-error" class="field-error" data-error-for="email" hidden></p>
             </div>
             <div class="form-success" data-success hidden>
-              <p class="success-title" tabindex="-1" data-success-title><svg aria-hidden="true"><use href="#i-check"/></svg>You are on the list</p>
+              <p class="success-title" tabindex="-1" data-success-title><svg aria-hidden="true"><use href="#i-check"/></svg>You're on the list</p>
               <p data-success-message></p>
               <button class="link-button" type="button" data-reset>Use a different email</button>
             </div>
           </form>
-          <p class="form-note">Work email only. No pricing, no spam. <a href="#privacy">Privacy note</a></p>
+          <p class="form-note">Just your work email. We'll only write to you about the pilot. <a href="#privacy">Privacy note</a></p>
 
           <ul class="hero-proof">
             <li><svg aria-hidden="true"><use href="#i-mail"/></svg>Email, Excel and PDF requests</li>
             <li><svg aria-hidden="true"><use href="#i-calc"/></svg>Priced on your own tariffs</li>
-            <li><svg aria-hidden="true"><use href="#i-check"/></svg>Human approval on every quote</li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>Your team approves every quote in the pilot</li>
           </ul>
         </div>
       </div>
@@ -127,23 +129,23 @@
 
     <section id="problem" class="section">
       <div class="wrap">
-        <div class="section-head reveal">
-          <p class="label"><span>01</span>Why speed</p>
+        <div class="section-head">
+          <p class="label">Why speed</p>
           <h2>Spot freight goes to whoever answers first.</h2>
-          <p class="lede">A request lands as an email, a spreadsheet or a scanned PDF. Someone rebuilds it against the tariff, adds surcharges and margin, then types up the quote. On a small desk, that is the same few people every time, and every hour of delay is a load that might go elsewhere.</p>
+          <p class="lede">A request lands as an email, a spreadsheet or a scanned PDF. Someone checks the tariff, adds surcharges and margin, then types up the quote. On a small desk that's the same few people every time, in between everything else. It's fiddly, repetitive work, and it's exactly the kind an assistant can take off your plate.</p>
         </div>
         <ul class="stats">
-          <li class="stat reveal">
+          <li class="stat">
             <p class="stat-num">217<span>min</span></p>
             <p class="stat-text">Mean response time to a freight RFQ, across a survey of 70 firms. The median was 30 minutes.</p>
             <p class="stat-src">Magaya, 2023</p>
           </li>
-          <li class="stat reveal">
+          <li class="stat">
             <p class="stat-num">57<span>hrs</span></p>
             <p class="stat-text">Average time for a manual quote from large forwarders in a mystery shopper test. Many never replied at all.</p>
             <p class="stat-src">Freightos, 2018</p>
           </li>
-          <li class="stat reveal">
+          <li class="stat">
             <p class="stat-num">&lt;10<span>staff</span></p>
             <p class="stat-text">Headcount at most of the roughly 1,800 UK forwarders in BIFA. Quoting competes with everything else.</p>
             <p class="stat-src">BIFA</p>
@@ -155,54 +157,54 @@
 
     <section id="how" class="section section-alt">
       <div class="wrap">
-        <div class="section-head reveal">
-          <p class="label"><span>02</span>How it works</p>
-          <h2>From inbox to booking, on one route.</h2>
-          <p class="lede">Four stops. QuotePilot does the heavy lifting in between, and the draft waits at stop three until a person on your team says go.</p>
+        <div class="section-head">
+          <p class="label">How it works</p>
+          <h2>Four steps from inbox to booking.</h2>
+          <p class="lede">QuotePilot will do the reading, the looking up and the sums. Your team makes the call at step three.</p>
         </div>
         <div class="how-grid">
           <ol class="route">
-            <li class="stop reveal">
+            <li class="stop">
               <span class="stop-icon"><svg aria-hidden="true"><use href="#i-mail"/></svg></span>
               <div>
-                <p class="stop-no">Stop 01</p>
+                <p class="stop-no">Step 1</p>
                 <h3>Intake</h3>
-                <p>Reads quote requests from email, Excel and PDF, alongside the rate sheets and tariffs you already use. It maps a customer's spreadsheet onto your template and uses OCR on rate sheets, bills of lading, customs documents, invoices, POs, packing lists and transport orders.</p>
+                <p>QuotePilot will read quote requests from email, Excel and PDF, alongside the rate sheets and tariffs you already use. It will map a customer's spreadsheet onto your template and use OCR on scans, covering rate sheets, bills of lading, customs documents, invoices, POs, packing lists and transport orders.</p>
               </div>
             </li>
-            <li class="stop reveal">
+            <li class="stop">
               <span class="stop-icon"><svg aria-hidden="true"><use href="#i-calc"/></svg></span>
               <div>
-                <p class="stop-no">Stop 02</p>
+                <p class="stop-no">Step 2</p>
                 <h3>Draft the quote</h3>
-                <p>Prices the job from your tariffs, surcharges and margin rules. Road, sea and air each keep the rating basis your team already works with.</p>
+                <p>It will price the job from your tariffs, surcharges and margin rules. Road, sea and air each keep the rating basis your team already works with.</p>
               </div>
             </li>
-            <li class="stop stop-key reveal">
+            <li class="stop stop-key">
               <span class="stop-icon"><svg aria-hidden="true"><use href="#i-check"/></svg></span>
               <div>
-                <p class="stop-no">Stop 03</p>
+                <p class="stop-no">Step 3</p>
                 <h3>Your team approves</h3>
-                <p>Nothing reaches a customer without your approval. Someone on your desk checks the draft, adjusts if needed and hits send.</p>
+                <p>Someone on your desk checks the draft, adjusts it if needed and approves it with a click. During the pilot, nothing goes to a customer without that approval.</p>
               </div>
             </li>
-            <li class="stop reveal">
+            <li class="stop">
               <span class="stop-icon"><svg aria-hidden="true"><use href="#i-box"/></svg></span>
               <div>
-                <p class="stop-no">Stop 04</p>
+                <p class="stop-no">Step 4</p>
                 <h3>Booking</h3>
-                <p>When the customer says yes, QuotePilot carries the accepted quote straight into a booking, without retyping the details.</p>
+                <p>When the customer says yes, QuotePilot will carry the accepted quote into a booking, so nobody retypes the details.</p>
               </div>
             </li>
           </ol>
 
-          <figure class="waybill reveal">
+          <figure class="waybill">
             <div class="waybill-head">
               <div>
                 <p class="waybill-kicker">Draft quote</p>
                 <p class="waybill-route">HAM <svg aria-hidden="true"><use href="#i-arrow"/></svg> MIL</p>
               </div>
-              <p class="stamp">Awaiting review</p>
+              <p class="stamp">Ready for review</p>
             </div>
             <dl class="waybill-grid">
               <div><dt>Source</dt><dd>Customer email + Excel</dd></div>
@@ -217,8 +219,8 @@
               <li><span>Tail lift</span><span class="dots"></span><span>on request</span></li>
             </ul>
             <div class="waybill-foot">
-              <span class="barcode" aria-hidden="true"></span>
-              <span>Sent only after your team approves</span>
+              <span class="mock-button" aria-hidden="true"><svg><use href="#i-tick"/></svg>Approve and send</span>
+              <span>Goes out once your team approves</span>
             </div>
             <figcaption>Illustration only. Not a real customer quote.</figcaption>
           </figure>
@@ -226,14 +228,14 @@
       </div>
     </section>
 
-    <section id="modes" class="section">
+    <section id="freight" class="section">
       <div class="wrap">
-        <div class="section-head reveal">
-          <p class="label"><span>03</span>Modes</p>
-          <h2>Road, sea and air. Your tariffs, your way.</h2>
-          <p class="lede">The draft follows the mode on the request and the tariff structure you already use. No new rate logic to learn.</p>
+        <div class="section-head">
+          <p class="label">Road, sea and air</p>
+          <h2>Your tariffs, the way you already use them.</h2>
+          <p class="lede">The draft will follow the freight mode on the request and the tariff structure you already have. There's no new rate logic to learn.</p>
         </div>
-        <div class="modes reveal" data-tabs>
+        <div class="modes" data-tabs>
           <div class="mode-tabs" role="tablist" aria-label="Freight modes">
             <button type="button" role="tab" id="tab-road" aria-controls="panel-road" aria-selected="true" class="mode-tab tab-road"><svg aria-hidden="true"><use href="#i-truck"/></svg>Road</button>
             <button type="button" role="tab" id="tab-sea" aria-controls="panel-sea" aria-selected="false" tabindex="-1" class="mode-tab tab-sea"><svg aria-hidden="true"><use href="#i-ship"/></svg>Sea</button>
@@ -243,7 +245,7 @@
             <div>
               <p class="mode-scope">FTL, LTL and groupage</p>
               <h3>Road freight</h3>
-              <p>Pallet, loading metre, weight band and zone tariffs. Minimum charges and chargeable weight handled the way your rate sheet says.</p>
+              <p>Pallet, loading metre, weight band and zone tariffs, with minimum charges and chargeable weight handled the way your rate sheet says.</p>
             </div>
             <ul class="mode-tags">
               <li>Pallet tariffs</li><li>Loading metres</li><li>Weight bands</li><li>Zones</li><li>Minimum charges</li><li>Chargeable weight</li>
@@ -263,15 +265,15 @@
             <div>
               <p class="mode-scope">Chargeable weight</p>
               <h3>Air freight</h3>
-              <p>Air rates calculated on chargeable weight, straight from your own rate sheets.</p>
+              <p>Air rates worked out on chargeable weight, straight from your own rate sheets.</p>
             </div>
             <ul class="mode-tags">
               <li>Chargeable weight</li><li>Your air rate sheets</li>
             </ul>
           </div>
         </div>
-        <div class="extras reveal">
-          <p>Extras that make or break the margin, handled when they are on the job:</p>
+        <div class="extras">
+          <p>The extras that decide the margin, included when they're on the job:</p>
           <ul>
             <li>Tolls</li><li>Fuel</li><li>Waiting time</li><li>Extra stops</li><li>Tail lift</li><li>Urgency</li>
           </ul>
@@ -279,38 +281,62 @@
       </div>
     </section>
 
-    <section id="review" class="section section-alt">
-      <div class="wrap review-grid">
-        <div class="reveal">
-          <p class="label"><span>04</span>Control</p>
-          <h2>You stay in the driver's seat.</h2>
-          <p class="lede">QuotePilot is a co-pilot for your quoting desk, not an autopilot. It prepares the draft from your tariffs, your surcharges, your margin rules and the request in front of you. A person on your team decides what goes out.</p>
+    <section id="modes" class="section section-alt" aria-labelledby="modes-title">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="label">Where we're heading</p>
+          <h2 id="modes-title">Co-pilot mode and autopilot mode</h2>
+          <p class="lede">QuotePilot is planned with two clearly separate modes. Every pilot partner starts in co-pilot mode. Autopilot mode is where we're heading, and it will only ever run if you switch it on.</p>
         </div>
-        <ul class="promise reveal">
-          <li><svg aria-hidden="true"><use href="#i-check"/></svg><div><h3>No quote sends itself</h3><p>Every draft waits for a person to approve it.</p></div></li>
-          <li><svg aria-hidden="true"><use href="#i-calc"/></svg><div><h3>Your numbers, not ours</h3><p>Drafts come from the tariffs and rules you provide.</p></div></li>
-          <li><svg aria-hidden="true"><use href="#i-box"/></svg><div><h3>Joining stores very little</h3><p>The waitlist does not connect a mailbox or upload a tariff. It keeps only what you type into the form.</p></div></li>
+        <div class="mode-cards">
+          <article class="mode-card card-copilot">
+            <p class="mode-when">Today and throughout the pilot</p>
+            <h3>Co-pilot mode</h3>
+            <p class="mode-what">QuotePilot drafts the quote from your own tariffs. You approve the rates with a click instead of typing them out.</p>
+            <ul class="mode-list">
+              <li><svg aria-hidden="true"><use href="#i-tick"/></svg>A person on your team approves every quote before it goes to a customer.</li>
+              <li><svg aria-hidden="true"><use href="#i-tick"/></svg>You can adjust any draft before you send it.</li>
+              <li><svg aria-hidden="true"><use href="#i-tick"/></svg>Every pilot partner starts here.</li>
+            </ul>
+            <p class="mode-demo" aria-hidden="true"><span class="mock-button"><svg><use href="#i-tick"/></svg>Approve and send</span><span>One click, and it's yours to send.</span></p>
+          </article>
+          <article class="mode-card card-autopilot">
+            <p class="mode-when">The plan for later, if you want it</p>
+            <h3>Autopilot mode</h3>
+            <p class="mode-what">Once QuotePilot fully understands your rates, the plan is that it will quote your customers completely hands-off and handle that side of the workflow automatically.</p>
+            <ul class="mode-list">
+              <li><svg aria-hidden="true"><use href="#i-tick"/></svg>It will never be on by default.</li>
+              <li><svg aria-hidden="true"><use href="#i-tick"/></svg>You will switch it on when you trust the drafts, and you will be able to switch it off again.</li>
+              <li><svg aria-hidden="true"><use href="#i-tick"/></svg>It isn't part of the pilot.</li>
+            </ul>
+            <p class="mode-demo" aria-hidden="true"><span class="mock-switch"></span><span>Autopilot is off until you switch it on.</span></p>
+          </article>
+        </div>
+        <p class="rule"><svg aria-hidden="true"><use href="#i-check"/></svg><span><strong>The approval rule.</strong> During the pilot, and until you switch on autopilot mode, a person on your team approves every quote before it's sent.</span></p>
+        <ul class="promise">
+          <li><svg aria-hidden="true"><use href="#i-calc"/></svg><div><h3>Your numbers, not ours</h3><p>Drafts will come from the tariffs and rules you provide.</p></div></li>
+          <li><svg aria-hidden="true"><use href="#i-box"/></svg><div><h3>Joining stores very little</h3><p>The waitlist doesn't connect a mailbox or upload a tariff. It keeps only what you type into the form.</p></div></li>
         </ul>
       </div>
     </section>
 
     <section id="pilot" class="section pilot">
       <div class="wrap pilot-grid">
-        <div class="reveal">
-          <p class="label"><span>05</span>Pilot</p>
-          <h2>Start with one lane. Measure everything.</h2>
-          <p class="lede">We are taking on a handful of forwarders as design partners before launch. You pick one repeat lane or tariff. Together we track the clock from request received, to quote sent, to booking.</p>
+        <div>
+          <p class="label">The pilot</p>
+          <h2>Start with one lane. We'll measure it together.</h2>
+          <p class="lede">We're taking on a handful of forwarders as design partners before launch. You pick one repeat lane or tariff, we set QuotePilot up on it with you, and together we time the journey from request received, to quote sent, to booking. Your feedback will shape what we build next.</p>
           <ol class="pilot-steps">
             <li><span>1</span>Pick one repeat lane or tariff</li>
             <li><span>2</span>We set QuotePilot up on it with you</li>
-            <li><span>3</span>We measure request to quote to booking</li>
+            <li><span>3</span>We measure request to quote to booking together</li>
           </ol>
-          <p class="contact-line">Questions first? Email <a href="mailto:cathal@autopilotconsultants.com">cathal@autopilotconsultants.com</a></p>
+          <p class="contact-line">Got questions first? Email <a href="mailto:cathal@autopilotconsultants.com">cathal@autopilotconsultants.com</a></p>
         </div>
 
-        <form class="form-card reveal" action="api/waitlist" method="post" data-waitlist-form aria-label="Pilot waitlist">
+        <form class="form-card" action="api/waitlist" method="post" data-waitlist-form aria-label="Pilot waitlist">
           <h3 class="form-title">Join the pilot waitlist</h3>
-          <p class="form-intro">Work email is enough. The rest helps us reply with the right context.</p>
+          <p class="form-intro">Your work email is enough. The rest just helps us reply with the right context.</p>
           <div class="form-banner" data-banner tabindex="-1" hidden></div>
           <div data-fields>
             <div class="field">
@@ -349,10 +375,10 @@
               <input id="pilot-leave-blank" name="qp_leave_blank" type="text" tabindex="-1" autocomplete="off" value="">
             </div>
             <button class="button button-block" type="submit">Join the pilot waitlist</button>
-            <p class="form-note">Used only to contact you about the pilot. <a href="#privacy">Privacy note</a></p>
+            <p class="form-note">We'll only use this to contact you about the pilot. <a href="#privacy">Privacy note</a></p>
           </div>
           <div class="form-success" data-success hidden>
-            <p class="success-title" tabindex="-1" data-success-title><svg aria-hidden="true"><use href="#i-check"/></svg>You are on the list</p>
+            <p class="success-title" tabindex="-1" data-success-title><svg aria-hidden="true"><use href="#i-check"/></svg>You're on the list</p>
             <p data-success-message></p>
             <button class="link-button" type="button" data-reset>Use a different email</button>
           </div>
@@ -362,31 +388,31 @@
 
     <section id="faq" class="section">
       <div class="wrap faq-grid">
-        <div class="section-head reveal">
-          <p class="label"><span>06</span>FAQ</p>
+        <div class="section-head">
+          <p class="label">FAQ</p>
           <h2>Good questions.</h2>
-          <p class="lede">Anything else, email <a href="mailto:cathal@autopilotconsultants.com">cathal@autopilotconsultants.com</a>.</p>
+          <p class="lede">Anything else? Just email <a href="mailto:cathal@autopilotconsultants.com">cathal@autopilotconsultants.com</a>.</p>
         </div>
-        <div class="faq reveal">
+        <div class="faq">
           <details>
             <summary>Who is QuotePilot for?</summary>
-            <p>Small and mid-size European freight forwarders and 3PLs. Specifically operations managers, owners, and the sales or quoting team who answer rate requests every day.</p>
+            <p>Small and mid-size European freight forwarders and 3PLs. In particular owners, operations managers and the sales or quoting team who answer rate requests every day.</p>
           </details>
           <details>
-            <summary>What can it read?</summary>
-            <p>Incoming quote requests in email, Excel and PDF, plus your rate sheets and tariffs. It can map a customer's Excel file onto your template. OCR covers rate sheets, bills of lading and master bills, customs documents, invoices, purchase orders, packing lists and transport orders.</p>
+            <summary>What will it read?</summary>
+            <p>Incoming quote requests in email, Excel and PDF, plus your rate sheets and tariffs. It will be able to map a customer's Excel file onto your template. OCR will cover rate sheets, bills of lading and master bills, customs documents, invoices, purchase orders, packing lists and transport orders.</p>
           </details>
           <details>
-            <summary>Which freight modes are covered?</summary>
-            <p>Road (FTL, LTL and groupage, with pallet, loading metre, weight band and zone tariffs, minimum charges and chargeable weight), sea (LCL by weight or measure, FCL per container, and surcharges such as BAF, CAF and ETS) and air (chargeable weight). Extras include tolls, fuel, waiting time, extra stops, tail lift and urgency.</p>
+            <summary>Which freight modes will be covered?</summary>
+            <p>Road (FTL, LTL and groupage, with pallet, loading metre, weight band and zone tariffs, minimum charges and chargeable weight), sea (LCL by weight or measure, FCL per container, and surcharges such as BAF, CAF and ETS) and air (chargeable weight). Extras will include tolls, fuel, waiting time, extra stops, tail lift and urgency.</p>
           </details>
           <details>
             <summary>Will a quote ever go out on its own?</summary>
-            <p>No. Nothing goes to a customer without the forwarder's approval. A person on your team reviews every draft and sends it.</p>
+            <p>Not during the pilot, and never unless you choose it. Today and throughout the pilot, QuotePilot works in co-pilot mode, so a person on your team approves every quote before it's sent. Autopilot mode is a future option for hands-off quoting. It will be off by default, and it will only run if you switch it on.</p>
           </details>
           <details>
             <summary>What does the pilot involve?</summary>
-            <p>A handful of forwarders, starting with one repeat lane or tariff each. Together we measure the time from request received, to quote sent, to booking. QuotePilot is pre-launch, so pilot partners help shape it.</p>
+            <p>A handful of forwarders, starting with one repeat lane or tariff each. We set QuotePilot up on it with you, and together we measure the time from request received, to quote sent, to booking. QuotePilot is pre-launch, so pilot partners help shape it.</p>
           </details>
           <details>
             <summary>Who is behind it?</summary>
@@ -394,15 +420,15 @@
           </details>
           <details>
             <summary>What happens to my details if I join?</summary>
-            <p>We store them so we can contact you about the pilot, and nothing else. The <a href="#privacy">privacy note</a> lists exactly what is kept and how to have it deleted.</p>
+            <p>We store them so we can contact you about the pilot, and for nothing else. The <a href="#privacy">privacy note</a> lists exactly what is kept and how to have it deleted.</p>
           </details>
         </div>
       </div>
     </section>
 
     <section class="cta-band">
-      <div class="wrap cta-inner reveal">
-        <h2>Your next spot request is already on its way.</h2>
+      <div class="wrap cta-inner">
+        <h2>Let's make your next spot quote an easy one.</h2>
         <a class="button" href="#pilot">Join the pilot<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
       </div>
     </section>
@@ -413,14 +439,14 @@
       <div>
         <p class="footer-brand">
           <svg class="mark" viewBox="0 0 32 32" width="28" height="28" aria-hidden="true">
-            <rect x="1" y="1" width="30" height="30" rx="8" fill="#ff7a1a"/>
-            <path d="M8 21.5c3.5 0 4-11 8-11s4.5 11 8 11" fill="none" stroke="#060b14" stroke-width="2.4" stroke-linecap="round"/>
-            <circle cx="8" cy="21.5" r="2.4" fill="#060b14"/>
-            <circle cx="24" cy="21.5" r="2.4" fill="#060b14"/>
+            <rect x="1" y="1" width="30" height="30" rx="8" fill="#12294a"/>
+            <path d="M8 21.5c3.5 0 4-11 8-11s4.5 11 8 11" fill="none" stroke="#ffc83d" stroke-width="2.4" stroke-linecap="round"/>
+            <circle cx="8" cy="21.5" r="2.4" fill="#ffc83d"/>
+            <circle cx="24" cy="21.5" r="2.4" fill="#ffc83d"/>
           </svg>
           QuotePilot
         </p>
-        <p>Spot quotes for small and mid-size European freight forwarders and 3PLs. Built by Autopilot Consultants in Hamburg.</p>
+        <p>Easier spot quotes for small and mid-size European freight forwarders and 3PLs. Built by Autopilot Consultants in Hamburg.</p>
       </div>
       <div>
         <h2>Contact</h2>
@@ -432,8 +458,8 @@
         <ul class="footer-links">
           <li><a href="#problem">Why speed</a></li>
           <li><a href="#how">How it works</a></li>
-          <li><a href="#modes">Modes</a></li>
-          <li><a href="#review">Control</a></li>
+          <li><a href="#freight">Road, sea and air</a></li>
+          <li><a href="#modes">Co-pilot and autopilot</a></li>
           <li><a href="#pilot">Pilot</a></li>
           <li><a href="#faq">FAQ</a></li>
         </ul>

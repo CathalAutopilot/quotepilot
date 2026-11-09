@@ -156,4 +156,4 @@ The map script uses the `d3-geo`, `topojson-client` and `world-atlas` dev depend
 
 ## Fonts
 
-Space Grotesk (headings), Inter (body) and JetBrains Mono (labels and data) are self-hosted from Fontsource under the SIL Open Font License. License texts are in `public/fonts/`.
+Bricolage Grotesque (headings) and Figtree (body) are self-hosted from Fontsource under the SIL Open Font License. License texts are in `public/fonts/`.
