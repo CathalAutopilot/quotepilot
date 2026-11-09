@@ -6,9 +6,8 @@
   "kv_namespaces": [
     {
       "binding": "WAITLIST",
-      // Fill these in after creating the namespaces. See README.
-      // "id": "<production namespace id>",
-      // "preview_id": "<preview namespace id>"
+      "id": "1f50736e48194133871327ecae0c144c",
+      "preview_id": "8319ac1f66c947eb87f3625da65a1ddb"
     }
   ]
 }

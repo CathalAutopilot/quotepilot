@@ -4,6 +4,8 @@ Pilot waitlist site for [QuotePilot](https://autopilotconsultants.com/quotepilot
 
 The page is static HTML, CSS and JavaScript. Signups are stored by a Cloudflare Pages Function in a Workers KV namespace bound as `WAITLIST`. There is no pricing on the page.
 
+The site is live at https://quotepilot-f88.pages.dev. The Cloudflare Pages project is `quotepilot`. After `npm run build`, deploy with `npx wrangler pages deploy dist`.
+
 ## Local development
 
 Requires Node.js 20 or newer.
@@ -111,14 +113,14 @@ KV reads are eventually consistent. A signup is acknowledged after `put` succeed
 
 ## Deploy to Cloudflare Pages
 
-1. `npx wrangler login`
-2. Create the KV namespaces and set `id` and `preview_id` as above.
-3. Either connect the Git repository, or deploy from this machine:
+The site is live at https://quotepilot-f88.pages.dev. The Cloudflare Pages project is `quotepilot`.
 
 ```bash
 npm run build
-npx wrangler pages deploy dist --project-name quotepilot
+npx wrangler pages deploy dist
 ```
+
+`npx wrangler login` once per machine. `wrangler.jsonc` already sets the project name and the `WAITLIST` KV namespace ids. You can also connect this Git repository instead of deploying from a machine.
 
 Git build settings:
 
